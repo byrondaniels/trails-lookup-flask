@@ -1,6 +1,17 @@
 <pre>language: python
+
 install:
-– pip install -r requirements.txt
+
+- pip install -r requirements.txt
+
+# command to run tests
+
 script:
-– python -m pytest -v
-– flake8</pre>
+
+# unit test
+
+- python -m pytest -v
+
+# linting test
+
+- flake8</pre>
