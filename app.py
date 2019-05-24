@@ -5,6 +5,7 @@ from flask_login import login_user, login_required, logout_user
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from backend.models import Users, Login, SavedTrails
+from backend.email_system import send_email
 
 
 @app.route('/', methods=['GET'])
@@ -117,5 +118,15 @@ def signin():
         return jsonify({'status': 'error', 'message': "Missing form fields"}), 400
 
 
+@app.route('/send-email', methods=['POST'])
+def send_email_to_user():
+    data = request.get_json()
+    print("Called send email", data)
+    farm_name = data.get('farmName')
+    user_email = data.get('userEmail')
+    send_email(farm_name, user_email)
+    return jsonify({'status': 1}), 201
+
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='127.0.0.1', port=int(os.environ.get('PORT', 5000)))
