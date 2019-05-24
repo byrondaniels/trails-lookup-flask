@@ -1,8 +1,9 @@
-<pre>language: python3
+<pre>language: python
+python:
+  - "3.6"
 
 install:
-
-- pip3 install -r requirements.txt
+- pip install -r requirements.txt
 
 # command to run tests
 
