@@ -13,6 +13,11 @@ def hello_world():
     return 'i like cheese'
 
 
+@app.route('/check-server', methods=["GET"])
+def check_server():
+    return jsonify('success')
+
+
 @app.route('/save-trail', methods=['POST'])
 def save_trail():
     data = request.get_json()
@@ -129,4 +134,5 @@ def send_email_to_user():
 
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=int(os.environ.get('PORT', 5000)))
+    print("lets eat cheese")
+    app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))

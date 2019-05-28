@@ -5,7 +5,4 @@ WORKDIR /usr/src/trails-flask
 COPY ./ ./
 RUN pip install -r requirements.txt
 
-RUN adduser -D myuser
-USER myuser
-
-CMD ["/bin/bash"]
+CMD ["python3", "app.py"]
